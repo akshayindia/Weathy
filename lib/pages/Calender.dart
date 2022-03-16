@@ -103,9 +103,9 @@ print (_listEvent[day]);
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TableCalendar - Events'),
+        title: Text('Stock Listing Calender'),
       ),
-      body: Column(
+      body: Column( 
         children: [
           TableCalendar<Event>(
             firstDay: kFirstDay,
@@ -179,7 +179,8 @@ print (_listEvent[day]);
 
                         },),
                         // onTap: () => print('${value[index]}'),
-                        title: Text('Rs ' +'${value[index-1]}'),
+                        title: Text('AAPL'),
+                        subtitle: Text('Rs ' +'${value[index-1]}'),
                       ),
                     );}
                     else {
