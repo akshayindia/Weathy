@@ -86,13 +86,13 @@ class CallToActionWidget extends StatelessWidget {
                     Provider.of<AirTableBuySell>(context, listen:  false).createrecord(e);
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
-                              'Congratulations You\'ve brought 10 unit of AAPL Stocks',
+                              'Congratulations You\'ve brought 10 unit of WEALTHY Stocks',
                             ),
                             backgroundColor: Colors.green,
                             duration: const Duration(seconds: 5),
                           ));
                    },),
-                   title: Text('AAPL'),
+                   title: Text('WEALTHY'),
                    subtitle: Text('Rs $e'),
                    
                    ),
@@ -107,13 +107,13 @@ class CallToActionWidget extends StatelessWidget {
 
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
-                              'Congratulations You\'ve sold 10 unit of AAPL Stocks',
+                              'Congratulations You\'ve sold 10 unit of WEALTHY Stocks',
                             ),
                             backgroundColor: Colors.green,
                             duration: const Duration(seconds: 5),
                           ));
                    },),
-                   title: Text('AAPL'),
+                   title: Text('WEALTHY'),
                    subtitle: Text('Rs $e'),
                    
                    ),
@@ -159,7 +159,7 @@ class StockGraph extends StatelessWidget {
             // majorGridLines: const MajorGridLines(width: 1),
             // borderColor: Colors.green
             //   ),
-                // title: ChartTitle(text: 'AAPL - 2022'),
+                // title: ChartTitle(text: 'WEALTHY - 2022'),
               series: <LineSeries<SalesData, String>>[
             LineSeries<SalesData, String>(
                 // Bind data source
