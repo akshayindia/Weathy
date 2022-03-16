@@ -1,5 +1,4 @@
 
-import 'dart:collection';
 import 'dart:convert';
 import 'dart:math';
 
@@ -68,7 +67,8 @@ int randomNumber =  random.nextInt(200) + 300;
       Map.fromIterable( json.decode(response.body)['records'],
   key: (i) =>  DateTime.utc(int.parse(i['fields']['Name'].toString().split('-')[0]),int.parse(i['fields']['Name'].toString().split('-')[1]),int.parse(i['fields']['Name'].toString().split('-')[2])), 
   value: (i) =>  [Event(i['fields']['Number'].toString())]);
-    
+  //  print(87878888);
+  //   print(a);
      Map<DateTime, String> b =
 
       Map.fromIterable( json.decode(response.body)['records'],
@@ -88,7 +88,7 @@ _listid = b;
 Future<void> retriverecord(String? scriptId) async {
     var url = "https://api.airtable.com/v0/appyFv8BdGIwO1XUF/Table%201/recLwSJ1Vjh2Mg7Kh";
     try {
-      final response = await Api('keyzvxCW0Z7oOQ6bJ').get(url);
+       await Api('keyzvxCW0Z7oOQ6bJ').get(url);
     } catch (error) {
       throw (error);
     }

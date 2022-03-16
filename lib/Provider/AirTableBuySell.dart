@@ -3,15 +3,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:table_calendar_example/Provider/api.dart';
 
-
 class AirTableBuySell with ChangeNotifier {
-  AirTableBuySell(this._listBuySell,);
+  AirTableBuySell(this._listBuySell, this._id);
 
-  Map<DateTime, int> _listBuySell = {};
+  List _listBuySell = [];
+  List _id = [];
   // Map<DateTime, String> _listid = {};
 
-  Map<DateTime, int> get iteams {
+  List get iteams {
     return _listBuySell;
+  }
+
+  List get id {
+    return _id;
   }
 
   // Map<DateTime, String> get iteamId {
@@ -21,25 +25,34 @@ class AirTableBuySell with ChangeNotifier {
   Future<void> createrecord(int number) async {
     var url = 'https://api.airtable.com/v0/appZdnwct4lJbfJj6/Table%201';
     // print(DateTime.now().toString().substring(0, 10));
+
+    number = number * 10;
     String date = DateTime.now().toString().substring(0, 10);
     var body = {
       "records": [
         {
-          "fields": {"Name": date, "Number": number}
+          "fields": {"BuySell": date, "Number": number}
         }
       ]
     };
     final response = await Api('keyzvxCW0Z7oOQ6bJ').post(url, body);
 
+    print(json.decode(response.body));
+
     var b = json.decode(response.body);
 
-    _listBuySell[DateTime.utc(
-        int.parse(b['records'][0]['fields']['BuySell'].toString().split('-')[0]),
-        int.parse(b['records'][0]['fields']['BuySell'].toString().split('-')[1]),
-        int.parse(
-            b['records'][0]['fields']['BuySell'].toString().split('-')[2]))] = 
+    _listBuySell.add([
+      DateTime.utc(
+          int.parse(
+              b['records'][0]['fields']['BuySell'].toString().split('-')[0]),
+          int.parse(
+              b['records'][0]['fields']['BuySell'].toString().split('-')[1]),
+          int.parse(
+              b['records'][0]['fields']['BuySell'].toString().split('-')[2])),
       b['records'][0]['fields']['Number']
-    ;
+    ]);
+
+    _id.add(b['records'][0]['id']);
     // _listid[DateTime.utc(
     //     int.parse(b['records'][0]['fields']['Name'].toString().split('-')[0]),
     //     int.parse(b['records'][0]['fields']['Name'].toString().split('-')[1]),
@@ -56,27 +69,46 @@ class AirTableBuySell with ChangeNotifier {
     try {
       final response = await Api('keyzvxCW0Z7oOQ6bJ').get(url);
       print(json.decode(response.body));
-      Map<DateTime, int> a = Map.fromIterable(
-          json.decode(response.body)['records'],
-          key: (i) => DateTime.utc(
+      List b = [];
+      json.decode(response.body)['records'].forEach((i) {
+        b.add([
+          DateTime.utc(
               int.parse(i['fields']['BuySell'].toString().split('-')[0]),
               int.parse(i['fields']['BuySell'].toString().split('-')[1]),
               int.parse(i['fields']['BuySell'].toString().split('-')[2])),
-          value: (i) => i['fields']['Number']??3000);
+          i['fields']['Number'] ?? 3000
+        ]);
+      });
 
-      // Map<DateTime, String> b = Map.fromIterable(
-      //     json.decode(response.body)['records'],
-      //     key: (i) => DateTime.utc(
-      //         int.parse(i['fields']['BuySell'].toString().split('-')[0]),
-      //         int.parse(i['fields']['BuySell'].toString().split('-')[1]),
-      //         int.parse(i['fields']['BuySell'].toString().split('-')[2])),
-      //     value: (i) => i['id'].toString());
-print(a);
+      List idBuySell = [];
+      json.decode(response.body)['records'].forEach((i) {
+        idBuySell.add(i['id']);
+      });
+      print(idBuySell);
+      _id = idBuySell;
 
-      _listBuySell = a;
+      print(234234234234);
+
+      _listBuySell = b;
     } catch (error) {
       throw (error);
     }
+    notifyListeners();
+  }
+
+  Future<void> reset() async {
+    print(6866878777877878787);
+//  String id =  _listid[selecteddate].toString();
+    print(_id);
+    _id.forEach((element) async {
+      var url =
+          'https://api.airtable.com/v0/appZdnwct4lJbfJj6/Table%201/$element';
+      var response = await Api('keyzvxCW0Z7oOQ6bJ').delete(url);
+      print(json.decode(response.body));
+    });
+_listBuySell.clear();
+    _id.clear();
+
     notifyListeners();
   }
 }

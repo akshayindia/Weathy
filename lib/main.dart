@@ -30,9 +30,10 @@ Future<void> main() async {
             previousProject == null ? {}: previousProject.iteams, previousProject == null ? {}: previousProject.iteamId 
           ),),
             ChangeNotifierProxyProvider0<AirTableBuySell>(
-            create: (context) => AirTableBuySell({}), 
+            create: (context) => AirTableBuySell([],[]), 
           update: (ctx, previousProject) => AirTableBuySell( 
-            previousProject == null ? {}: previousProject.iteams,
+            previousProject == null ? []: previousProject.iteams,
+            previousProject == null? []: previousProject.id
           ),)
         ],
         child: Builder(builder: (BuildContext context) {

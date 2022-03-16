@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:table_calendar_example/Provider/AirTableApi.dart';
-import 'package:table_calendar_example/Provider/api.dart';
 
 import '../utils.dart';
 
@@ -51,10 +50,8 @@ _listEvent = Provider.of<AirTableApi>(context).iteams;
     super.dispose();
   }
 
-
-
   List<Event> _getEventsForDay(DateTime day) {
-;    // Implementation example
+  // Implementation example
 print (_listEvent[day]);
     // AirTableApi().listEvent[day]
     return  _listEvent[day] ?? [];
