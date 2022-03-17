@@ -1,6 +1,6 @@
 # Stock Market App
 This is a stock market Game build on Flutter for the fun pupose.
 
-This project is free to use and it's open source. 
+It contains stock graph, Buy & Sell functionality and calender option to tweaking the stock price.
 
-![image](https://user-images.githubusercontent.com/36562389/158778480-50094ddc-3571-4866-b796-30dda328f465.png)
+![Stock market App](https://user-images.githubusercontent.com/36562389/158779552-889cc05d-d5ae-43fe-a80d-84825dd5594b.png)
