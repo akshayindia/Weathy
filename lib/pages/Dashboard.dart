@@ -42,7 +42,7 @@ class _ChartState extends State<Chart> {
     var d = DateTime.utc(
         DateTime.now().year, DateTime.now().month, DateTime.now().day);
     print(d);
-    int e = _listEvent[d] == null ? 300 : int.parse(_listEvent[d]!.first.title);
+    int e = _listEvent[d] == null ? 200 : int.parse(_listEvent[d]!.first.title);
 
     return Scaffold(
         appBar: AppBar(title: Text('Wealthy Dashboard')),
