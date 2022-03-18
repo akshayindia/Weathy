@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   @override
   void didChangeDependencies() {
     if(_isint){
-    Provider.of<AirTableBuySell>(context).listrecords();
+    Provider.of<AirTableBuySell>(context, listen : true).listrecords();
     Provider.of<AirTableApi>(context).listrecords().then((value) => 
     setState((){
       _isLoading = false;
