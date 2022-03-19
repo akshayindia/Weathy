@@ -16,7 +16,6 @@ class Api {
   }
 
   Future update(url, body1) async {
-    // print(json.encode(body));
     return await http.patch(Uri.parse(url),
         headers: {
           'Content-Type': 'application/json',

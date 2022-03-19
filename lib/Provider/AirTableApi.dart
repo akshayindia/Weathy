@@ -67,8 +67,6 @@ int randomNumber =  random.nextInt(200) + 300;
       Map.fromIterable( json.decode(response.body)['records'],
   key: (i) =>  DateTime.utc(int.parse(i['fields']['Name'].toString().split('-')[0]),int.parse(i['fields']['Name'].toString().split('-')[1]),int.parse(i['fields']['Name'].toString().split('-')[2])), 
   value: (i) =>  [Event(i['fields']['Number'].toString())]);
-  //  print(87878888);
-  //   print(a);
      Map<DateTime, String> b =
 
       Map.fromIterable( json.decode(response.body)['records'],

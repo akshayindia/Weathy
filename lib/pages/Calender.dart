@@ -178,7 +178,6 @@ print (_listEvent[day]);
                           
 
                         },),
-                        // onTap: () => print('${value[index]}'),
                         title: Text('WEALTHY'),
                         subtitle: Text('Rs ' +'${value[index-1]}'),
                       ),

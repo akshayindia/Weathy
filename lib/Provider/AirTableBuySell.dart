@@ -24,7 +24,6 @@ class AirTableBuySell with ChangeNotifier {
 
   Future<void> createrecord(int number) async {
     var url = 'https://api.airtable.com/v0/appZdnwct4lJbfJj6/Table%201';
-    // print(DateTime.now().toString().substring(0, 10));
 
     number = number * 10;
     String date = DateTime.now().toString().substring(0, 10);
@@ -37,7 +36,6 @@ class AirTableBuySell with ChangeNotifier {
     };
     final response = await Api('keyzvxCW0Z7oOQ6bJ').post(url, body);
 
-    print(json.decode(response.body));
 
     var b = json.decode(response.body);
 
@@ -68,7 +66,6 @@ class AirTableBuySell with ChangeNotifier {
 
     try {
       final response = await Api('keyzvxCW0Z7oOQ6bJ').get(url);
-      print(json.decode(response.body));
       List b = [];
       json.decode(response.body)['records'].forEach((i) {
         b.add([
@@ -84,10 +81,8 @@ class AirTableBuySell with ChangeNotifier {
       json.decode(response.body)['records'].forEach((i) {
         idBuySell.add(i['id']);
       });
-      print(idBuySell);
       _id = idBuySell;
 
-      print(234234234234);
 
       _listBuySell = b;
     } catch (error) {
@@ -97,14 +92,10 @@ class AirTableBuySell with ChangeNotifier {
   }
 
   Future<void> reset() async {
-    print(6866878777877878787);
-//  String id =  _listid[selecteddate].toString();
-    print(_id);
     _id.forEach((element) async {
       var url =
           'https://api.airtable.com/v0/appZdnwct4lJbfJj6/Table%201/$element';
-      var response = await Api('keyzvxCW0Z7oOQ6bJ').delete(url);
-      print(json.decode(response.body));
+  await Api('keyzvxCW0Z7oOQ6bJ').delete(url);
     });
 _listBuySell.clear();
     _id.clear();

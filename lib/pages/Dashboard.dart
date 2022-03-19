@@ -41,7 +41,6 @@ class _ChartState extends State<Chart> {
     });
     var d = DateTime.utc(
         DateTime.now().year, DateTime.now().month, DateTime.now().day);
-    print(d);
     int e = _listEvent[d] == null ? 200 : int.parse(_listEvent[d]!.first.title);
 
     return Scaffold(
@@ -69,8 +68,6 @@ class CallToActionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(3253245);
-    print(c);
     return Expanded(
       
       child: Column(
